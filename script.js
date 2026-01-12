@@ -1,43 +1,35 @@
-const menuToggle = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); 
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-            navLinks.classList.remove('active');
-        }
-    });
-});
-
-const textElement = document.querySelector('.typing-text');
-const phrases = ["Student.", "Developer.", "Android Specialist.", "Tech Enthusiast."];
-let phraseIndex = 0;
+// Typing effect functionality
+const textElement = document.getElementById('typing-text');
+const words = ["Software Developer", "Student", "UI/UX Designer"]; // Add your titles here
+let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let typeSpeed = 150;
 
-function typeEffect() {
-    if (!textElement) return;
-    const currentPhrase = phrases[phraseIndex];
-    textElement.textContent = isDeleting ? currentPhrase.substring(0, charIndex--) : currentPhrase.substring(0, charIndex++);
-    let typeSpeed = isDeleting ? 100 : 200;
-    if (!isDeleting && charIndex === currentPhrase.length) {
+function type() {
+    const currentWord = words[wordIndex];
+    
+    if (isDeleting) {
+        textElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 100;
+    } else {
+        textElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 200;
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
         isDeleting = true;
-        typeSpeed = 2000; 
+        typeSpeed = 2000; // Pause at the end of the word
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500; 
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
     }
-    setTimeout(typeEffect, typeSpeed);
+
+    setTimeout(type, typeSpeed);
 }
-document.addEventListener('DOMContentLoaded', typeEffect);
+
+// Start the typing effect when the page loads
+document.addEventListener('DOMContentLoaded', type);
