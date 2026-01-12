@@ -180,6 +180,10 @@ header {
         display: flex; 
     }
     
+    .navbar {
+        flex-wrap: wrap; 
+    }
+    
     .hero {
         flex-direction: column; 
         padding-top: 120px;

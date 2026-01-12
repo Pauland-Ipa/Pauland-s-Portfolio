@@ -27,7 +27,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* --- Typewriter Effect --- */
 const textElement = document.querySelector('.typing-text');
-const phrases = ["Student.", "Developer.", "Android Developer.", "Project Manager."];
+const phrases = ["Student.", "Developer.", "Android Specialist.", "Tech Enthusiast."];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
