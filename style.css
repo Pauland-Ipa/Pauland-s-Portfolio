@@ -13,15 +13,12 @@
     --btn-hover: #b3b3b3;  
 }
 
-html {
-    scroll-behavior: smooth; /* Native smooth scrolling backup */
-}
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* --- Reusable Classes --- */
@@ -63,14 +60,21 @@ a:hover {
 }
 
 /* --- Header & Navigation --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    z-index: 1000;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    position: relative; /* Needed for absolute positioning of mobile menu */
 }
 
 .logo {
@@ -96,24 +100,20 @@ a:hover {
     gap: 1.5rem;
 }
 
-.social-icon {
-    font-size: 1.2rem;
-}
-
 .menu-toggle {
-    display: none; /* Hidden by default on desktop */
+    display: none; 
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* --- Hero Section (Main Content) --- */
+/* --- Hero Section --- */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 80vh; 
-    padding: 2rem 5%;
-    max-width: 1200px;
+    min-height: 100vh; 
+    padding: 0 5%;
+    max-width: 1400px;
     margin: 0 auto;
     gap: 4rem;
 }
@@ -133,10 +133,9 @@ a:hover {
 .hero-text-container p {
     font-size: 1.2rem;
     color: var(--muted-text);
-    max-width: 500px;
 }
 
-/* Typing cursor effect */
+/* Typing cursor animation */
 .typing-text {
     border-right: 2px solid var(--text-color);
     padding-right: 5px;
@@ -150,8 +149,8 @@ a:hover {
 .image-placeholder {
     width: 100%;
     height: 600px; 
-    background-color: #444; 
-    border: 2px dashed #666;
+    background-color: #383a3c; 
+    border: 1px solid #444;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +158,7 @@ a:hover {
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .menu-toggle {
         display: block; 
     }
@@ -168,14 +167,12 @@ a:hover {
         display: none; 
         flex-direction: column;
         width: 100%;
-        text-align: center;
-        padding-top: 20px;
+        text-align: left;
         position: absolute;
-        top: 70px; /* Adjust based on navbar height */
+        top: 100%;
         left: 0;
         background-color: var(--bg-color);
-        z-index: 1000;
-        padding-bottom: 20px;
+        padding: 20px 5%;
         border-bottom: 1px solid #444;
     }
 
@@ -183,18 +180,11 @@ a:hover {
         display: flex; 
     }
     
-    .navbar {
-        flex-wrap: wrap; 
-    }
-    
     .hero {
         flex-direction: column; 
+        padding-top: 120px;
         text-align: center;
         gap: 2rem;
-    }
-
-    .hero-text-container p {
-        margin: 0 auto; 
     }
 
     .hero-text-container h1 {

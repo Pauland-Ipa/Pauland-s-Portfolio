@@ -19,7 +19,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             targetSection.scrollIntoView({
                 behavior: 'smooth'
             });
-            // Close mobile menu if open
+            // Auto-close menu on mobile after clicking
             navLinks.classList.remove('active');
         }
     });
@@ -27,13 +27,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* --- Typewriter Effect --- */
 const textElement = document.querySelector('.typing-text');
-const phrases = ["Student.", "Developer.", "Creative Thinker."];
+const phrases = ["Student.", "Developer.", "Android Developer.", "Project Manager."];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
 function typeEffect() {
-    if (!textElement) return; // Guard clause in case element is missing
+    if (!textElement) return;
 
     const currentPhrase = phrases[phraseIndex];
     
@@ -57,5 +57,4 @@ function typeEffect() {
     setTimeout(typeEffect, typeSpeed);
 }
 
-// Start effect when DOM is ready
 document.addEventListener('DOMContentLoaded', typeEffect);
