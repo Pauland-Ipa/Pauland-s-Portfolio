@@ -1,10 +1,8 @@
-// Typing effect functionality
 const textElement = document.getElementById('typing-text');
-const words = ["Software Developer", "Student", "UI/UX Designer"]; // Add your titles here
+const words = ["Software Developer", "Student", "Tech Enthusiast"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-let typeSpeed = 150;
 
 function type() {
     const currentWord = words[wordIndex];
@@ -12,16 +10,16 @@ function type() {
     if (isDeleting) {
         textElement.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
-        typeSpeed = 100;
     } else {
         textElement.textContent = currentWord.substring(0, charIndex + 1);
         charIndex++;
-        typeSpeed = 200;
     }
+
+    let typeSpeed = isDeleting ? 100 : 200;
 
     if (!isDeleting && charIndex === currentWord.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at the end of the word
+        typeSpeed = 2000; // Wait before deleting
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % words.length;
@@ -31,5 +29,4 @@ function type() {
     setTimeout(type, typeSpeed);
 }
 
-// Start the typing effect when the page loads
 document.addEventListener('DOMContentLoaded', type);
