@@ -29,4 +29,10 @@ function type() {
     setTimeout(type, typeSpeed);
 }
 
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you! Your message (placeholder) has been sent.');
+    this.reset();
+});
+
 document.addEventListener('DOMContentLoaded', type);
