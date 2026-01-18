@@ -72,10 +72,9 @@ nav {
     font-weight: bold;
 }
 
-/* SECTION COMMON STYLING */
+/* COMMON SECTION STYLES */
 .section-container {
     padding: 100px 10%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,24 +119,13 @@ nav {
     margin-bottom: 2rem;
 }
 
-.contact-btn {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-}
-
-/* PROJECTS GRID */
+/* PROJECT SNIPPETS & GRID */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     width: 100%;
+    margin-bottom: 3rem;
 }
 
 .project-card {
@@ -163,11 +151,16 @@ nav {
     padding: 1.5rem;
 }
 
-/* CONTACT FORM */
-.contact-content {
-    width: 100%;
-    max-width: 600px;
+/* CONTACT SECTION */
+.contact-section {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 80px 10%;
     text-align: center;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #contact-form {
@@ -185,23 +178,48 @@ nav {
     color: var(--text-color);
 }
 
-/* TYPING CURSOR */
-.cursor {
-    animation: blink 0.8s infinite;
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
+/* SOCIALS PAGE STYLES */
+.socials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
 }
 
-/* RESPONSIVE */
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background 0.3s;
+}
+
+.social-link-item:hover {
+    background: var(--accent-color);
+}
+
+/* CURSOR BLINK */
+.cursor { animation: blink 0.8s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
 @media (max-width: 992px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    .profile-img {
-        width: 300px;
-        height: 300px;
-    }
+    .hero { flex-direction: column; text-align: center; }
+    .profile-img { width: 300px; height: 300px; }
 }

@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pauland Ipa Philip | Portfolio</title>
+    <title>Home | Pauland Ipa Philip</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <nav>
         <div class="logo">My Portfolio</div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="socials.html">Socials</a></li>
         </ul>
         <div class="nav-right">
             <div class="social-icons">
@@ -25,46 +24,43 @@
         </div>
     </nav>
 
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="profile-container">
             <img src="profile.jpeg" alt="Pauland Ipa Philip" class="profile-img">
         </div>
         <div class="hero-content">
             <h1>My name is Pauland Ipa Philip.</h1>
             <p>I am a <span id="typing-text"></span><span class="cursor">|</span></p>
-            <a href="#contact" class="contact-btn">Contact Me</a>
+            <a href="#contact" class="btn-primary">Contact Me</a>
         </div>
     </section>
 
-    <section id="projects" class="section-container">
-        <h2 class="section-title">My Projects</h2>
+    <section class="section-container">
+        <h2 class="section-title">About Me</h2>
+        <p style="max-width: 800px; text-align: center;">
+            I am a passionate developer with a strong focus on mobile app development and computer graphics. 
+            Currently, I am exploring the world of Android and OpenGL to create immersive user experiences.
+        </p>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Project Highlights</h2>
         <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image-placeholder">Project Image</div>
-                <div class="project-info">
-                    <h3>Project Title</h3>
-                    <p>Placeholder for your project description.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image-placeholder">Project Image</div>
-                <div class="project-info">
-                    <h3>Project Title</h3>
-                    <p>Placeholder for your project description.</p>
-                </div>
-            </div>
+            <div class="project-card"><div class="project-image-placeholder">Project 1</div><div class="project-info"><h3>Android App</h3></div></div>
+            <div class="project-card"><div class="project-image-placeholder">Project 2</div><div class="project-info"><h3>OpenGL Graphics</h3></div></div>
+            <div class="project-card"><div class="project-image-placeholder">Project 3</div><div class="project-info"><h3>Web Portfolio</h3></div></div>
         </div>
+        <a href="projects.html" class="btn-primary">View all of my projects</a>
     </section>
 
-    <section id="contact" class="section-container">
-        <h2 class="section-title">Contact Me</h2>
+    <section id="contact" class="contact-section">
         <div class="contact-content">
-            <p>Interested in working together? Drop me a message below!</p>
+            <h2 class="section-title">Contact Me</h2>
             <form id="contact-form">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
                 <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="contact-btn">Send Message</button>
+                <button type="submit" class="btn-primary">Send Message</button>
             </form>
         </div>
     </section>
