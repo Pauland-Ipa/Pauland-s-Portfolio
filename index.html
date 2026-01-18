@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Pauland Ipa Philip</title>
+    <title>Pauland Ipa Philip | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <nav>
         <div class="logo">My Portfolio</div>
         <ul class="nav-links">
@@ -17,14 +18,14 @@
         </ul>
         <div class="nav-right">
             <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pauland-ipa" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-            <a href="#" class="resume-btn">Resume</a>
+            <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="profile-container">
             <img src="profile.jpeg" alt="Pauland Ipa Philip" class="profile-img">
         </div>
@@ -37,20 +38,37 @@
 
     <section class="section-container">
         <h2 class="section-title">About Me</h2>
-        <p style="max-width: 800px; text-align: center;">
-            I am a passionate developer with a strong focus on mobile app development and computer graphics. 
-            Currently, I am exploring the world of Android and OpenGL to create immersive user experiences.
-        </p>
+        <div class="about-content">
+            [cite_start]<p>I am a Bachelor of Computer Science (Multimedia Computing) student at Universiti Malaysia Sarawak (UNIMAS)[cite: 9]. [cite_start]I specialize in building responsive web applications and mobile mockups, with technical skills spanning Python, C++, and JavaScript[cite: 13, 34].</p>
+        </div>
     </section>
 
     <section class="section-container">
         <h2 class="section-title">Project Highlights</h2>
         <div class="projects-grid">
-            <div class="project-card"><div class="project-image-placeholder">Project 1</div><div class="project-info"><h3>Android App</h3></div></div>
-            <div class="project-card"><div class="project-image-placeholder">Project 2</div><div class="project-info"><h3>OpenGL Graphics</h3></div></div>
-            <div class="project-card"><div class="project-image-placeholder">Project 3</div><div class="project-info"><h3>Web Portfolio</h3></div></div>
+            <div class="project-card">
+                <div class="project-image-placeholder">Figma Prototype</div>
+                <div class="project-info">
+                    <h3>Sarawak ART Prototype</h3>
+                    [cite_start]<p>High-fidelity mobile application prototype for the Sarawak public transport system[cite: 19].</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image-placeholder">Android Studio</div>
+                <div class="project-info">
+                    <h3>e-Bookstore App</h3>
+                    [cite_start]<p>A mobile mockup developed using Kotlin, featuring search and authentication[cite: 23, 24, 26].</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image-placeholder">Web Dev</div>
+                <div class="project-info">
+                    <h3>Portfolio Website</h3>
+                    [cite_start]<p>A fully responsive site built from scratch using HTML, CSS, and JavaScript[cite: 11, 13, 14].</p>
+                </div>
+            </div>
         </div>
-        <a href="projects.html" class="btn-primary">View all of my projects</a>
+        <a href="projects.html" class="btn-primary" style="margin-top: 2rem;">View all of my projects</a>
     </section>
 
     <section id="contact" class="contact-section">
