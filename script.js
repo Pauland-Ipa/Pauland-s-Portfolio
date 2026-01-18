@@ -28,4 +28,15 @@ function type() {
 
     setTimeout(type, typeSpeed);
 }
+
+// Form logic
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Message received! (Placeholder functionality)');
+        this.reset();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', type);
