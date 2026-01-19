@@ -11,17 +11,24 @@
 
     <nav>
         <div class="logo">My Portfolio</div>
-        <ul class="nav-links">
+        
+        <ul class="nav-links" id="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="socials.html">Socials</a></li>
+            <li class="mobile-only"><a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a></li>
+            <li class="mobile-only"><a href="https://github.com/Pauland-Ipa" target="_blank">GitHub</a></li>
         </ul>
+
         <div class="nav-right">
-            <div class="social-icons">
+            <div class="social-icons desktop-only">
                 <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fab fa-github"></i></a>
             </div>
             <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -47,5 +54,6 @@
         </div>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>

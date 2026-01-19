@@ -19,6 +19,16 @@ function type() {
 document.addEventListener('DOMContentLoaded', () => {
     type();
     
+    // HAMBURGER MENU TOGGLE
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
     // FUNCTIONAL CONTACT FORM LOGIC
     const form = document.getElementById('contact-form');
     if(form) {
@@ -30,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value;
             const recipient = "ppawlenchumil@gmail.com";
 
-            // Basic email regex for valid structure check
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
             if (!emailPattern.test(email)) {
@@ -38,11 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Constructing the mailto link
             const subject = encodeURIComponent(`Portfolio Message from ${name}`);
             const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
             
-            // Redirects to default mail app
             window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
             
             form.reset();
