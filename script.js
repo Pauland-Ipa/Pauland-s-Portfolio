@@ -1,5 +1,5 @@
 const textElement = document.getElementById('typing-text');
-const words = ["Multimedia Student", "Game Enthusianst", "Web Designer"];
+const words = ["Multimedia Student", "Game Enthusiast", "Web Designer"];
 let wordIndex = 0, charIndex = 0, isDeleting = false;
 
 function type() {

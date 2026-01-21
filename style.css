@@ -15,19 +15,45 @@ html { scroll-behavior: smooth; }
 body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; overflow-x: hidden; }
 h1, h2, h3, .logo { font-family: 'Poppins', sans-serif; }
 
-/* NAVIGATION */
+/* NAVIGATION - CENTERED REDESIGN */
 nav {
     height: var(--nav-height);
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 5%; position: fixed; top: 0; width: 100%;
-    background-color: var(--bg-color); z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.nav-links { list-style: none; display: flex; gap: 2rem; }
-.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
+
+.logo {
+    flex: 1; /* Takes up space on the left */
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    flex: 2; /* Takes up central space */
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centers the links */
+    gap: 3rem;
+}
+
+.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: 0.3s; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
 
-.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-right {
+    flex: 1; /* Takes up space on the right */
+    display: flex;
+    justify-content: flex-end; /* Pushes content to the far right */
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .social-icons { display: flex; gap: 1rem; }
 .social-icons a { color: var(--text-color); font-size: 1.2rem; transition: 0.3s; }
 .social-icons a:hover { color: var(--accent-color); }
@@ -45,7 +71,7 @@ nav {
 .section-container { padding: 80px 10%; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .section-title { font-size: 2.5rem; margin-bottom: 2.5rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 10px; display: inline-block; }
 
-/* PROJECTS GRID - FIXED ALIGNMENT */
+/* PROJECTS GRID - ALIGNED BUTTONS */
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; width: 100%; }
 .project-card { 
     background: rgba(255, 255, 255, 0.05); 
@@ -53,26 +79,17 @@ nav {
     overflow: hidden; 
     text-align: left; 
     display: flex; 
-    flex-direction: column; /* Allows internal alignment */
+    flex-direction: column; 
     height: 100%;
 }
 .project-image { height: 180px; width: 100%; background: #444; overflow: hidden; }
 .project-image img { width: 100%; height: 100%; object-fit: cover; }
-.project-info { 
-    padding: 1.5rem; 
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column; /* Pushes button to bottom */
-}
+.project-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
 .project-info h3 { color: var(--accent-color); margin-bottom: 10px; }
 .project-info p { margin-bottom: 1.5rem; font-size: 0.95rem; }
-.project-info .btn-primary { 
-    margin-top: auto; /* This forces the button to the bottom */
-    display: block; 
-    text-align: center; 
-}
+.project-info .btn-primary { margin-top: auto; display: block; text-align: center; }
 
-/* SOCIALS PAGE */
+/* SOCIALS LIST */
 .socials-list { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px; }
 .social-link-item { 
     padding: 1.2rem; background: rgba(255,255,255,0.05); text-decoration: none; 
@@ -98,10 +115,22 @@ footer p { font-size: 0.9rem; opacity: 0.7; }
 /* MOBILE RESPONSIVE */
 @media (max-width: 1100px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) {
-    .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-height); left: 0; width: 100%; background-color: var(--bg-color); padding: 2rem; }
+    nav { justify-content: space-between; }
+    .logo, .nav-links, .nav-right { flex: none; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        padding: 2rem;
+        gap: 2rem;
+    }
     .nav-links.active { display: flex; }
-    .hamburger { display: block; order: 2; }
-    .resume-btn { order: 1; margin-right: 15px; }
+    .hamburger { display: block; order: 3; }
+    .nav-right { order: 2; gap: 1rem; }
     .desktop-only { display: none; }
     .projects-grid { grid-template-columns: 1fr; }
     .hero { flex-direction: column; text-align: center; padding: 120px 5% 0; gap: 3rem; }
