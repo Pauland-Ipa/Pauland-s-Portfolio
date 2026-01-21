@@ -11,9 +11,9 @@ html { scroll-behavior: smooth; }
 }
 
 :root {
-    --bg-color: #354230; /* Original Forest Green */
-    --text-color: #E6E2D3; /* Original Cream */
-    --accent-color: #6B8E23; /* Original Olive Green */
+    --bg-color: #354230; /* Forest Green */
+    --text-color: #E6E2D3; /* Cream */
+    --accent-color: #6B8E23; /* Olive Green */
     --nav-height: 80px;
 }
 
@@ -41,7 +41,7 @@ nav {
 .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
 
 .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-.social-icons { display: flex; gap: 1rem; }
+.social-icons { display: flex; gap: 1rem; align-items: center; }
 .social-icons a { color: var(--text-color); font-size: 1.2rem; transition: 0.3s; }
 .social-icons a:hover { color: var(--accent-color); }
 
@@ -74,14 +74,14 @@ nav {
     border: 6px solid var(--accent-color); 
     box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
 }
-.hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; text-align: left; }
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; }
 .hero-content p { font-size: 1.8rem; margin-bottom: 2rem; }
 
 /* SECTIONS */
 .section-container { padding: 80px 10%; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .section-title { font-size: 2.5rem; margin-bottom: 2.5rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 10px; display: inline-block; }
 
-/* PROJECTS GRID - 3 COLUMNS */
+/* PROJECTS GRID - FIXED 3 COLUMNS */
 .projects-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -95,12 +95,29 @@ nav {
 .project-info h3 { color: var(--accent-color); margin-bottom: 10px; }
 .project-info p { margin-bottom: 1.5rem; font-size: 0.95rem; }
 
+/* SOCIALS PAGE FIX */
+.socials-list { display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 400px; margin-top: 2rem; }
+.social-link-item { 
+    padding: 1.2rem; 
+    background: rgba(255,255,255,0.05); 
+    text-decoration: none; 
+    color: var(--text-color); 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    transition: 0.3s;
+    font-weight: 500;
+}
+.social-link-item i { font-size: 1.5rem; }
+.social-link-item:hover { background: var(--accent-color); color: white; transform: translateX(10px); }
+
 /* CONTACT SECTION FIXES */
 .contact-section { background: rgba(0,0,0,0.1); padding: 80px 10%; }
 .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
 #contact-form { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
 #contact-form input, #contact-form textarea { 
-    padding: 1rem; 
+    padding: 1.2rem; 
     border-radius: 5px; 
     border: none; 
     background: rgba(255,255,255,0.05); 
@@ -122,7 +139,7 @@ nav {
 
 /* FOOTER */
 footer { padding: 40px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-footer p { font-size: 0.9rem; margin-top: 1rem; opacity: 0.7; }
+footer p { font-size: 0.9rem; margin-top: 1.5rem; opacity: 0.7; }
 .footer-socials { display: flex; justify-content: center; gap: 1.5rem; font-size: 1.5rem; }
 .footer-socials a { color: var(--text-color); transition: 0.3s; }
 .footer-socials a:hover { color: var(--accent-color); }
