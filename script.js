@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. TYPING EFFECT
+    // 1. THEME TOGGLE - DEFAULT TO DARK
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.innerText = currentTheme === 'light' ? 'dark_mode' : 'light_mode';
+
+    themeToggle.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        let newTheme = theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.innerText = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+    });
+
+    // 2. TYPING EFFECT
     const textElement = document.getElementById('typing-text');
     const words = ["Software Developer", "Student", "Web Designer"];
     let wordIndex = 0, charIndex = 0, isDeleting = false;
@@ -17,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     type();
 
-    // 2. REVEAL ON SCROLL
+    // 3. REVEAL ON SCROLL
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -26,28 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     reveals.forEach(el => revealObserver.observe(el));
 
-    // 3. BACK TO TOP
+    // 4. BACK TO TOP
     const backToTop = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 400) backToTop.style.display = 'block';
         else backToTop.style.display = 'none';
     });
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // 4. THEME TOGGLE
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    themeIcon.innerText = currentTheme === 'light' ? 'dark_mode' : 'light_mode';
-
-    themeToggle.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        let newTheme = theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeIcon.innerText = newTheme === 'light' ? 'dark_mode' : 'light_mode';
-    });
 
     // 5. COPY EMAIL
     const copyBtn = document.getElementById('copy-btn');
@@ -88,4 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     if (hamburger) hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+    // 8. TILT INITIATION
+    VanillaTilt.init(document.querySelectorAll(".project-card"), {
+        max: 15,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+    });
 });
