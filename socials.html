@@ -40,6 +40,32 @@
         </div>
     </section>
 
+    <section id="contact" class="contact-section reveal">
+        <div class="contact-content">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="email-container">
+                <p>My email: <span id="email-text">ppawlenchumil@gmail.com</span></p>
+                <button id="copy-btn" class="icon-btn" title="Copy to clipboard">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span>
+                </button>
+            </div>
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+                <div id="success-animation" class="hidden">
+                    <div class="paper-plane"></div>
+                    <p>Message Ready!</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <button id="back-to-top" title="Go to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
     <footer>
         <p>&copy; 2026 Pauland Ipa Philip. All rights reserved.</p>
     </footer>

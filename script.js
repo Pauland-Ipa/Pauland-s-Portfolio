@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // 5. COPY EMAIL
+    // 5. COPY EMAIL - TARGETED POSITIONING
     const copyBtn = document.getElementById('copy-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', () => {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. SUCCESS ANIMATION (PAPER PLANE)
+    // 6. SUCCESS ANIMATION
     const contactForm = document.getElementById('contact-form');
     const successAnim = document.getElementById('success-animation');
     if (contactForm) {
