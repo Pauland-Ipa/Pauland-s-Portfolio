@@ -1,70 +1,108 @@
-<div class="projects-grid">
-    <div class="project-card">
-        <div class="project-image-placeholder">Game Preview</div>
-        <div class="project-info">
-            <h3>'Fallen Alysium' 2D game</h3>
-            <p>A 2D mobile platform game set in a futuristic world where players face a rogue AI enemy to save the world.</p>
-            <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Download the game here (Mobile only)</button>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Pauland Ipa Philip</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
 
-    <div class="project-card">
-        <div class="project-image">
-            <img src="ART.jpeg" alt="A.R.T Prototype">
+    <nav>
+        <div class="logo">My Portfolio</div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="socials.html">Socials</a></li>
+            <li class="mobile-only"><a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank">LinkedIn</a></li>
+            <li class="mobile-only"><a href="https://github.com/Pauland-Ipa" target="_blank">GitHub</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="social-icons desktop-only">
+                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
         </div>
-        <div class="project-info">
-            <h3>A.R.T prototype app</h3>
-            [cite_start]<p>A prototype application for the Sarawak A.R.T system designed to book and manage transit bookings[cite: 17, 19].</p>
-            <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363&starting-point-node-id=28%3A115&t=3FPO4zIpBB8xXJxw-1" target="_blank" class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem; text-align: center; display: block;">Prototype link here</a>
-        </div>
-    </div>
+    </nav>
 
-    <div class="project-card">
-        <div class="project-image-placeholder">Website Preview</div>
-        <div class="project-info">
-            <h3>Commercial website for LukouHub</h3>
-            <p>A website made for the LukouHub Greek Donut Store that utilizes HTML, CSS, and JavaScript.</p>
-            <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">View the website here</button>
+    <section class="section-container" style="padding-top: 120px;">
+        <h2 class="section-title">All Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image-placeholder">Game Preview</div>
+                <div class="project-info">
+                    <h3>'Fallen Alysium' 2D game</h3>
+                    <p>A 2D mobile platform game set in a futuristic world where players face a rogue AI enemy to save the world.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Download the game here (Mobile only)</button>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><img src="ART.jpeg" alt="A.R.T Prototype"></div>
+                <div class="project-info">
+                    <h3>A.R.T prototype app</h3>
+                    <p>A prototype application for the Sarawak A.R.T system designed to book and manage transit bookings.</p>
+                    <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem; display: block;">Prototype link here</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image-placeholder">Website Preview</div>
+                <div class="project-info">
+                    <h3>Commercial website for LukouHub</h3>
+                    <p>A website made for the LukouHub Greek Donut Store that utilizes HTML, CSS, and JavaScript.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">View the website here</button>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image-placeholder">OpenGL Game</div>
+                <div class="project-info">
+                    <h3>'Ocean Cleanup Diver' OpenGL game</h3>
+                    <p>A simple 2D game made utilizing OpenGL via Visual Studio.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Try it here</button>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><img src="Paint.jpeg" alt="Simple Paint Program"></div>
+                <div class="project-info">
+                    <h3>Simple Paint Program</h3>
+                    <p>A paint program with simple features developed using OpenGL in Visual Studio.</p>
+                    <a href="Simple Paint Program.txt" target="_blank" class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem; display: block;">Try it here</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><img src="eBookstore.jpeg" alt="e-Bookstore Mockup"></div>
+                <div class="project-info">
+                    <h3>e-Bookstore mock-up mobile app</h3>
+                    <p>A mock-up app for an online bookstore utilizing Firebase and Android Studio with full CRUD features.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Download the app here (mobile only)</button>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image-placeholder">Client Portfolio</div>
+                <div class="project-info">
+                    <h3>Portfolio website for client</h3>
+                    <p>A responsive portfolio developed for a client using HTML, CSS, and JavaScript.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">View the client portfolio website here</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="project-card">
-        <div class="project-image-placeholder">OpenGL Game</div>
-        <div class="project-info">
-            <h3>'Ocean Cleanup Diver' OpenGL game</h3>
-            <p>A simple 2D game made utilizing OpenGL via Visual Studio.</p>
-            <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Try it here</button>
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h2 class="section-title">Contact Me</h2>
+            <p style="margin-bottom: 1.5rem;">My email: ppawlenchumil@gmail.com</p>
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
         </div>
-    </div>
+    </section>
 
-    <div class="project-card">
-        <div class="project-image">
-            <img src="Paint.jpeg" alt="Simple Paint Program">
-        </div>
-        <div class="project-info">
-            <h3>Simple Paint Program</h3>
-            [cite_start]<p>A paint program with simple features developed using OpenGL in Visual Studio[cite: 40, 42].</p>
-            <a href="Simple Paint Program.txt" target="_blank" class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem; text-align: center; display: block;">Try it here</a>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-image">
-            <img src="eBookstore.jpeg" alt="e-Bookstore Mockup">
-        </div>
-        <div class="project-info">
-            <h3>e-Bookstore mock-up mobile app</h3>
-            [cite_start]<p>A mock-up app for an online bookstore utilizing Firebase and Android Studio with full CRUD features[cite: 23, 24, 26].</p>
-            <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">Download the app here (mobile only)</button>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-image-placeholder">Client Portfolio</div>
-        <div class="project-info">
-            <h3>Portfolio website for client</h3>
-            [cite_start]<p>A responsive portfolio developed for a client using HTML, CSS, and JavaScript[cite: 11, 13].</p>
-            <button class="btn-primary" style="margin-top: 1rem; width: 100%; font-size: 0.9rem;">View the client portfolio website here</button>
-        </div>
-    </div>
-</div>
+    <script src="script.js"></script>
+</body>
+</html>
