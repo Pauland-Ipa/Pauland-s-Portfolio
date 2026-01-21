@@ -1,5 +1,5 @@
 const textElement = document.getElementById('typing-text');
-const words = ["Software Developer", "Student", "Web Designer"];
+const words = ["Multimedia Student", "Game Enthusianst", "Web Designer"];
 let wordIndex = 0, charIndex = 0, isDeleting = false;
 
 function type() {
@@ -19,7 +19,6 @@ function type() {
 document.addEventListener('DOMContentLoaded', () => {
     type();
     
-    // HAMBURGER MENU TOGGLE
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
@@ -29,30 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // FUNCTIONAL CONTACT FORM LOGIC
     const form = document.getElementById('contact-form');
     if(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             const recipient = "ppawlenchumil@gmail.com";
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid existing email address.");
-                return;
-            }
-
             const subject = encodeURIComponent(`Portfolio Message from ${name}`);
             const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            
             window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-            
-            form.reset();
         });
     }
 });
