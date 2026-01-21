@@ -1,0 +1,674 @@
+#include <windows.h>
+#include <GL/glut.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+//======================================================
+//  CONSTANTS & DEFINITIONS
+//======================================================
+
+// Menu options
+#define CLEAR 1
+#define EXIT 2
+#define COLOR_BLACK 3
+#define COLOR_RED 4
+#define COLOR_GREEN 5
+#define COLOR_BLUE 6
+#define COLOR_YELLOW 7
+#define COLOR_CYAN 8
+#define COLOR_MAGENTA 9
+#define COLOR_WHITE 10
+#define COLOR_ORANGE 11
+#define COLOR_PINK 12
+
+// Line widths
+#define LINE_WIDTH_1 20
+#define LINE_WIDTH_2 21
+#define LINE_WIDTH_3 22
+#define LINE_WIDTH_4 23
+#define LINE_WIDTH_5 24
+#define LINE_WIDTH_6 25
+
+// Point sizes
+#define POINT_SIZE_1 30
+#define POINT_SIZE_2 31
+#define POINT_SIZE_3 32
+#define POINT_SIZE_4 33
+#define POINT_SIZE_5 34
+#define POINT_SIZE_6 35
+
+// Shapes
+#define SHAPE_POINT 40
+#define SHAPE_LINE 41
+#define SHAPE_LINE_LOOP 42
+#define SHAPE_TRIANGLE_WIRE 43
+#define SHAPE_TRIANGLE_FILLED 44
+#define SHAPE_SQUARE_WIRE 45
+#define SHAPE_SQUARE_FILLED 46
+#define SHAPE_CIRCLE_WIRE 47
+#define SHAPE_CIRCLE_FILLED 48
+
+// UI Categories
+#define CATEGORY_LINES 50
+#define CATEGORY_TRIANGLES 51
+#define CATEGORY_QUADS 52
+
+// Limits
+#define MAX_SHAPES 200
+#define MAX_VERTICES 100
+
+//======================================================
+//  SHAPE STRUCTURE
+//======================================================
+struct Shape {
+    int type;
+    float color[3];
+    float lineWidth;
+    float pointSize;
+    float vertices[MAX_VERTICES * 2];
+    int vertexCount;
+};
+
+//======================================================
+//  GLOBAL VARIABLES
+//======================================================
+int window_width = 800;
+int window_height = 600;
+int panel_height = 120;
+
+Shape shapes[MAX_SHAPES];
+int shapeCount = 0;
+
+float tempVertices[20];
+int tempVertexCount = 0;
+
+int currentShapeType = SHAPE_LINE;
+int currentCategory = CATEGORY_QUADS; // default to Quads
+
+int clicksNeeded = 2;
+int clickCount = 0;
+
+float line_size = 2.0f;
+float point_size = 3.0f;
+float currentColour[3] = { 0.0f, 0.0f, 0.0f };
+
+float scaleX = 1.0f;
+float scaleY = 1.0f;
+int original_width = 800;
+int original_height = 600;
+
+bool isFilled = false;
+
+//======================================================
+//  FORWARD DECLARATIONS
+//======================================================
+void mouse(int btn, int state, int x, int y);
+void display();
+void reshape(int width, int height);
+void keyboard(unsigned char key, int x, int y);
+void processMenuEvents(int option);
+void createGLUTMenus();
+
+//======================================================
+//  HELPER FUNCTIONS
+//======================================================
+bool isInsideRect(int x, int y, int rx, int ry, int rw, int rh) {
+    return (x >= rx && x <= rx + rw && y >= ry && y <= ry + rh);
+}
+
+const char* getShapeName(int shapeType) {
+    switch (shapeType) {
+    case SHAPE_POINT: return "Point";
+    case SHAPE_LINE: return "Line";
+    case SHAPE_LINE_LOOP: return "Line Loop";
+    case SHAPE_TRIANGLE_WIRE: return "Triangle (Wire)";
+    case SHAPE_TRIANGLE_FILLED: return "Triangle (Filled)";
+    case SHAPE_SQUARE_WIRE: return "Square (Wire)";
+    case SHAPE_SQUARE_FILLED: return "Square (Filled)";
+    case SHAPE_CIRCLE_WIRE: return "Circle (Wire)";
+    case SHAPE_CIRCLE_FILLED: return "Circle (Filled)";
+    default: return "Unknown";
+    }
+}
+
+//======================================================
+//  BUTTON DRAWING
+//======================================================
+void drawButton(int x, int y, int w, int h, const char* label, bool selected) {
+    glBegin(GL_QUADS);
+    glColor3f(selected ? 0.3f : 0.8f, selected ? 0.6f : 0.8f, selected ? 0.9f : 0.8f);
+    glVertex2i(x, y); glVertex2i(x + w, y);
+    glVertex2i(x + w, y + h); glVertex2i(x, y + h);
+    glEnd();
+
+    glLineWidth(2.0f);
+    glBegin(GL_LINE_LOOP);
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glVertex2i(x, y); glVertex2i(x + w, y);
+    glVertex2i(x + w, y + h); glVertex2i(x, y + h);
+    glEnd();
+
+    glColor3f(0, 0, 0);
+    glRasterPos2i(x + 10, y + h / 2 + 5);
+    for (int i = 0; label[i] != '\0'; i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, label[i]);
+}
+
+//======================================================
+//  UI PANEL DRAWING
+//======================================================
+void drawPanel() {
+    int btnY = window_height - 50;
+    int shapeBtnY = window_height - 90;
+
+    // Panel background
+    glBegin(GL_QUADS);
+    glColor3f(0.95f, 0.95f, 0.95f);
+    glVertex2i(0, window_height - panel_height);
+    glVertex2i(window_width, window_height - panel_height);
+    glVertex2i(window_width, window_height);
+    glVertex2i(0, window_height);
+    glEnd();
+
+    // Border
+    glLineWidth(2);
+    glBegin(GL_LINES);
+    glColor3f(0.3f, 0.3f, 0.3f);
+    glVertex2i(0, window_height - panel_height);
+    glVertex2i(window_width, window_height - panel_height);
+    glEnd();
+
+    // Category buttons
+    drawButton(10, btnY, 110, 30, "Lines/Points", currentCategory == CATEGORY_LINES);
+    drawButton(130, btnY, 100, 30, "Triangles", currentCategory == CATEGORY_TRIANGLES);
+    drawButton(240, btnY, 90, 30, "Quads", currentCategory == CATEGORY_QUADS);
+
+    // Clear/Exit
+    drawButton(340, btnY, 80, 30, "Clear (C)", false);
+    drawButton(430, btnY, 80, 30, "Exit (E)", false);
+
+    // Shape buttons
+    if (currentCategory == CATEGORY_LINES) {
+        drawButton(10, shapeBtnY, 80, 30, "Point", currentShapeType == SHAPE_POINT);
+        drawButton(100, shapeBtnY, 80, 30, "Line", currentShapeType == SHAPE_LINE);
+        drawButton(190, shapeBtnY, 100, 30, "Line Loop", currentShapeType == SHAPE_LINE_LOOP);
+    }
+    else if (currentCategory == CATEGORY_TRIANGLES) {
+        drawButton(10, shapeBtnY, 120, 30, "Filled", isFilled);
+    }
+    else if (currentCategory == CATEGORY_QUADS) {
+        drawButton(10, shapeBtnY, 110, 30, "Square",
+            currentShapeType == SHAPE_SQUARE_WIRE || currentShapeType == SHAPE_SQUARE_FILLED);
+        drawButton(130, shapeBtnY, 110, 30, "Circle",
+            currentShapeType == SHAPE_CIRCLE_WIRE || currentShapeType == SHAPE_CIRCLE_FILLED);
+        drawButton(250, shapeBtnY, 110, 30, "Filled", isFilled);
+    }
+
+    // Status
+    char status[200];
+    sprintf_s(status, sizeof(status),
+        "Drawing: %s | Clicks %d/%d | Shapes: %d/%d | Line: %.0f | Point: %.0f",
+        getShapeName(currentShapeType),
+        clickCount, clicksNeeded,
+        shapeCount, MAX_SHAPES,
+        line_size, point_size
+    );
+
+    glRasterPos2i(10, window_height - 110);
+    for (int i = 0; status[i] != '\0'; i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, status[i]);
+
+    // Colour preview box
+    glBegin(GL_QUADS);
+    glColor3fv(currentColour);
+    glVertex2i(window_width - 60, window_height - 110);
+    glVertex2i(window_width - 10, window_height - 110);
+    glVertex2i(window_width - 10, window_height - 60);
+    glVertex2i(window_width - 60, window_height - 60);
+    glEnd();
+
+    glLineWidth(2.0f);
+    glColor3f(0,0,0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(window_width - 60, window_height - 110);
+    glVertex2i(window_width - 10, window_height - 110);
+    glVertex2i(window_width - 10, window_height - 60);
+    glVertex2i(window_width - 60, window_height - 60);
+    glEnd();
+}
+
+//======================================================
+//  DRAW CIRCLE USING LINE LOOP
+//======================================================
+void drawCircle(float cx, float cy, float radius, int segments) {
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < segments; i++) {
+        float theta = 2.0f * 3.14159f * (float)i / (float)segments;
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(cx + x, cy + y);
+    }
+    glEnd();
+}
+
+//======================================================
+//  TRUE SQUARE LOGIC (FIXED)
+//======================================================
+// Given diagonal A(x1,y1) and B(x2,y2), compute perfect square
+void generateSquare(float* src, float* out) {
+    float x1 = src[0];
+    float y1 = src[1];
+    float x2 = src[2];
+    float y2 = src[3];
+
+    float dx = x2 - x1;
+    float dy = y2 - y1;
+
+    float side = fmax(fabs(dx), fabs(dy));
+
+    // Keep direction
+    float sx = (dx >= 0) ? side : -side;
+    float sy = (dy >= 0) ? side : -side;
+
+    out[0] = x1;
+    out[1] = y1;
+    out[2] = x1 + sx;
+    out[3] = y1;
+    out[4] = x1 + sx;
+    out[5] = y1 + sy;
+    out[6] = x1;
+    out[7] = y1 + sy;
+}
+
+//======================================================
+//  DRAW ALL SAVED SHAPES (with scaling)
+//======================================================
+void drawAllShapes() {
+    for (int i = 0; i < shapeCount; i++) {
+        Shape& s = shapes[i];
+        glColor3fv(s.color);
+        glLineWidth(s.lineWidth);
+        glPointSize(s.pointSize);
+
+        switch (s.type) {
+        case SHAPE_POINT:
+            glBegin(GL_POINTS);
+            glVertex2f(s.vertices[0] * scaleX, s.vertices[1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_LINE:
+            glBegin(GL_LINES);
+            glVertex2f(s.vertices[0] * scaleX, s.vertices[1] * scaleY);
+            glVertex2f(s.vertices[2] * scaleX, s.vertices[3] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_LINE_LOOP:
+            glBegin(GL_LINE_LOOP);
+            for (int j = 0; j < s.vertexCount; j++)
+                glVertex2f(s.vertices[j * 2] * scaleX, s.vertices[j * 2 + 1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_TRIANGLE_WIRE:
+            glBegin(GL_LINE_LOOP);
+            for (int j = 0; j < 3; j++)
+                glVertex2f(s.vertices[j * 2] * scaleX, s.vertices[j * 2 + 1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_TRIANGLE_FILLED:
+            glBegin(GL_TRIANGLES);
+            for (int j = 0; j < 3; j++)
+                glVertex2f(s.vertices[j * 2] * scaleX, s.vertices[j * 2 + 1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_SQUARE_WIRE:
+            glBegin(GL_LINE_LOOP);
+            for (int j = 0; j < 4; j++)
+                glVertex2f(s.vertices[j * 2] * scaleX, s.vertices[j * 2 + 1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_SQUARE_FILLED:
+            glBegin(GL_QUADS);
+            for (int j = 0; j < 4; j++)
+                glVertex2f(s.vertices[j * 2] * scaleX, s.vertices[j * 2 + 1] * scaleY);
+            glEnd();
+            break;
+        case SHAPE_CIRCLE_WIRE: {
+            float cx = s.vertices[0] * scaleX;
+            float cy = s.vertices[1] * scaleY;
+            float dx = (s.vertices[2] - s.vertices[0]) * scaleX;
+            float dy = (s.vertices[3] - s.vertices[1]) * scaleY;
+            float radius = sqrtf(dx * dx + dy * dy);
+            drawCircle(cx, cy, radius, 50);
+            break;
+        }
+        case SHAPE_CIRCLE_FILLED: {
+            float cx = s.vertices[0] * scaleX;
+            float cy = s.vertices[1] * scaleY;
+            float dx = (s.vertices[2] - s.vertices[0]) * scaleX;
+            float dy = (s.vertices[3] - s.vertices[1]) * scaleY;
+            float radius = sqrtf(dx * dx + dy * dy);
+
+            glBegin(GL_TRIANGLE_FAN);
+            glVertex2f(cx, cy); // center
+            for (int j = 0; j <= 50; j++) {
+                float theta = 2.0f * 3.14159f * (float)j / 50.0f;
+                float x = radius * cosf(theta);
+                float y = radius * sinf(theta);
+                glVertex2f(cx + x, cy + y);
+            }
+            glEnd();
+            break;
+        }
+        }
+    }
+}
+
+//======================================================
+//  DRAW TEMP PREVIEW
+//======================================================
+void drawTempVertices() {
+    if (tempVertexCount == 0) return;
+
+    glColor3fv(currentColour);
+    glPointSize(8.0f);
+
+    glBegin(GL_POINTS);
+    for (int i = 0; i < tempVertexCount; i++)
+        glVertex2f(tempVertices[i * 2] * scaleX, tempVertices[i * 2 + 1] * scaleY);
+    glEnd();
+
+    if (tempVertexCount >= 2 && (currentShapeType != SHAPE_CIRCLE_WIRE && currentShapeType != SHAPE_CIRCLE_FILLED)) {
+        glLineWidth(line_size);
+        glBegin(GL_LINE_STRIP);
+        for (int i = 0; i < tempVertexCount; i++)
+            glVertex2f(tempVertices[i * 2] * scaleX, tempVertices[i * 2 + 1] * scaleY);
+        glEnd();
+    }
+
+    if ((currentShapeType == SHAPE_CIRCLE_WIRE || currentShapeType == SHAPE_CIRCLE_FILLED) && tempVertexCount == 2) {
+        float cx = tempVertices[0] * scaleX;
+        float cy = tempVertices[1] * scaleY;
+        float dx = (tempVertices[2] - tempVertices[0]) * scaleX;
+        float dy = (tempVertices[3] - tempVertices[1]) * scaleY;
+        float radius = sqrtf(dx * dx + dy * dy);
+        drawCircle(cx, cy, radius, 50);
+    }
+}
+
+//======================================================
+//  DISPLAY FUNCTION
+//======================================================
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    drawAllShapes();
+    drawTempVertices();
+    drawPanel();
+    glutSwapBuffers();
+}
+
+//======================================================
+//  MENU HANDLING
+//======================================================
+void processMenuEvents(int option) {
+    switch (option) {
+    case LINE_WIDTH_1: line_size = 1.0f; break;
+    case LINE_WIDTH_2: line_size = 2.0f; break;
+    case LINE_WIDTH_3: line_size = 3.0f; break;
+    case LINE_WIDTH_4: line_size = 4.0f; break;
+    case LINE_WIDTH_5: line_size = 5.0f; break;
+    case LINE_WIDTH_6: line_size = 6.0f; break;
+
+    case POINT_SIZE_1: point_size = 2.0f; break;
+    case POINT_SIZE_2: point_size = 4.0f; break;
+    case POINT_SIZE_3: point_size = 6.0f; break;
+    case POINT_SIZE_4: point_size = 8.0f; break;
+    case POINT_SIZE_5: point_size = 10.0f; break;
+    case POINT_SIZE_6: point_size = 12.0f; break;
+
+    case COLOR_BLACK: currentColour[0]=0; currentColour[1]=0; currentColour[2]=0; break;
+    case COLOR_RED: currentColour[0]=1; currentColour[1]=0; currentColour[2]=0; break;
+    case COLOR_GREEN: currentColour[0]=0; currentColour[1]=1; currentColour[2]=0; break;
+    case COLOR_BLUE: currentColour[0]=0; currentColour[1]=0; currentColour[2]=1; break;
+    case COLOR_YELLOW: currentColour[0]=1; currentColour[1]=1; currentColour[2]=0; break;
+    case COLOR_CYAN: currentColour[0]=0; currentColour[1]=1; currentColour[2]=1; break;
+    case COLOR_MAGENTA: currentColour[0]=1; currentColour[1]=0; currentColour[2]=1; break;
+    case COLOR_WHITE: currentColour[0]=1; currentColour[1]=1; currentColour[2]=1; break;
+    case COLOR_ORANGE: currentColour[0]=1; currentColour[1]=0.5f; currentColour[2]=0; break;
+    case COLOR_PINK: currentColour[0]=1; currentColour[1]=0.75f; currentColour[2]=0.8f; break;
+
+    case CLEAR: shapeCount=0; tempVertexCount=0; clickCount=0; break;
+    case EXIT: exit(0);
+    }
+    glutPostRedisplay();
+}
+
+void createGLUTMenus() {
+    int submenuColour = glutCreateMenu(processMenuEvents);
+    glutAddMenuEntry("Black", COLOR_BLACK);
+    glutAddMenuEntry("Red", COLOR_RED);
+    glutAddMenuEntry("Green", COLOR_GREEN);
+    glutAddMenuEntry("Blue", COLOR_BLUE);
+    glutAddMenuEntry("Yellow", COLOR_YELLOW);
+    glutAddMenuEntry("Cyan", COLOR_CYAN);
+    glutAddMenuEntry("Magenta", COLOR_MAGENTA);
+    glutAddMenuEntry("White", COLOR_WHITE);
+    glutAddMenuEntry("Orange", COLOR_ORANGE);
+    glutAddMenuEntry("Pink", COLOR_PINK);
+
+    int submenuLineWidth = glutCreateMenu(processMenuEvents);
+        glutAddMenuEntry("Width 1", LINE_WIDTH_1);
+    glutAddMenuEntry("Width 2", LINE_WIDTH_2);
+    glutAddMenuEntry("Width 3", LINE_WIDTH_3);
+    glutAddMenuEntry("Width 4", LINE_WIDTH_4);
+    glutAddMenuEntry("Width 5", LINE_WIDTH_5);
+    glutAddMenuEntry("Width 6", LINE_WIDTH_6);
+
+    int submenuPointSize = glutCreateMenu(processMenuEvents);
+    glutAddMenuEntry("Size 2", POINT_SIZE_1);
+    glutAddMenuEntry("Size 4", POINT_SIZE_2);
+    glutAddMenuEntry("Size 6", POINT_SIZE_3);
+    glutAddMenuEntry("Size 8", POINT_SIZE_4);
+    glutAddMenuEntry("Size 10", POINT_SIZE_5);
+    glutAddMenuEntry("Size 12", POINT_SIZE_6);
+
+    int menu = glutCreateMenu(processMenuEvents);
+    glutAddSubMenu("Colour", submenuColour);
+    glutAddSubMenu("Line Width", submenuLineWidth);
+    glutAddSubMenu("Point Size", submenuPointSize);
+    glutAddMenuEntry("Clear Screen", CLEAR);
+    glutAddMenuEntry("Exit", EXIT);
+
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+}
+
+//======================================================
+//  MOUSE HANDLING
+//======================================================
+void mouse(int btn, int state, int x, int y) {
+    int glY = window_height - y;
+    if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        int btnY = window_height - 50;
+        int shapeBtnY = window_height - 90;
+
+        // Clear / Exit buttons
+        if (isInsideRect(x, glY, 340, btnY, 80, 30)) { processMenuEvents(CLEAR); return; }
+        if (isInsideRect(x, glY, 430, btnY, 80, 30)) { processMenuEvents(EXIT); return; }
+
+        // Category switching
+        if (isInsideRect(x, glY, 10, btnY, 110, 30)) {
+            currentCategory = CATEGORY_LINES;
+            currentShapeType = SHAPE_LINE;
+            isFilled = false;
+            clicksNeeded = 2; tempVertexCount = clickCount = 0;
+            glutPostRedisplay(); return;
+        }
+        if (isInsideRect(x, glY, 130, btnY, 100, 30)) {
+            currentCategory = CATEGORY_TRIANGLES;
+            currentShapeType = SHAPE_TRIANGLE_WIRE;
+            clicksNeeded = 3; tempVertexCount = clickCount = 0;
+            glutPostRedisplay(); return;
+        }
+        if (isInsideRect(x, glY, 240, btnY, 90, 30)) {
+            currentCategory = CATEGORY_QUADS;
+            currentShapeType = SHAPE_SQUARE_WIRE;
+            clicksNeeded = 2; tempVertexCount = clickCount = 0;
+            glutPostRedisplay(); return;
+        }
+
+        // Shape buttons
+        if (currentCategory == CATEGORY_LINES) {
+            if (isInsideRect(x, glY, 10, shapeBtnY, 80, 30)) {
+                currentShapeType = SHAPE_POINT; isFilled = false;
+                clicksNeeded = 1; tempVertexCount = clickCount = 0; glutPostRedisplay(); return;
+            }
+            if (isInsideRect(x, glY, 100, shapeBtnY, 80, 30)) {
+                currentShapeType = SHAPE_LINE; isFilled = false;
+                clicksNeeded = 2; tempVertexCount = clickCount = 0; glutPostRedisplay(); return;
+            }
+            if (isInsideRect(x, glY, 190, shapeBtnY, 100, 30)) {
+                currentShapeType = SHAPE_LINE_LOOP; isFilled = false;
+                clicksNeeded = 3; tempVertexCount = clickCount = 0; glutPostRedisplay(); return;
+            }
+        }
+        else if (currentCategory == CATEGORY_TRIANGLES) {
+            if (isInsideRect(x, glY, 10, shapeBtnY, 120, 30)) {
+                isFilled = !isFilled;
+                currentShapeType = isFilled ? SHAPE_TRIANGLE_FILLED : SHAPE_TRIANGLE_WIRE;
+                glutPostRedisplay(); return;
+            }
+        }
+        else if (currentCategory == CATEGORY_QUADS) {
+            if (isInsideRect(x, glY, 10, shapeBtnY, 110, 30)) {
+                currentShapeType = isFilled ? SHAPE_SQUARE_FILLED : SHAPE_SQUARE_WIRE;
+                clicksNeeded = 2; tempVertexCount = clickCount = 0; glutPostRedisplay(); return;
+            }
+            if (isInsideRect(x, glY, 130, shapeBtnY, 110, 30)) {
+                currentShapeType = isFilled ? SHAPE_CIRCLE_FILLED : SHAPE_CIRCLE_WIRE;
+                clicksNeeded = 2; tempVertexCount = clickCount = 0; glutPostRedisplay(); return;
+            }
+            if (isInsideRect(x, glY, 250, shapeBtnY, 110, 30)) {
+                isFilled = !isFilled;
+                if (currentShapeType == SHAPE_SQUARE_WIRE || currentShapeType == SHAPE_SQUARE_FILLED)
+                    currentShapeType = isFilled ? SHAPE_SQUARE_FILLED : SHAPE_SQUARE_WIRE;
+                else if (currentShapeType == SHAPE_CIRCLE_WIRE || currentShapeType == SHAPE_CIRCLE_FILLED)
+                    currentShapeType = isFilled ? SHAPE_CIRCLE_FILLED : SHAPE_CIRCLE_WIRE;
+                glutPostRedisplay(); return;
+            }
+        }
+
+        // Drawing on canvas
+        if (glY < window_height - panel_height && shapeCount < MAX_SHAPES) {
+            float drawX = x / scaleX;
+            float drawY = glY / scaleY;
+
+            tempVertices[tempVertexCount * 2] = drawX;
+            tempVertices[tempVertexCount * 2 + 1] = drawY;
+            tempVertexCount++;
+            clickCount++;
+
+            if (clickCount >= clicksNeeded) {
+                Shape newShape;
+                newShape.type = currentShapeType;
+                newShape.color[0] = currentColour[0];
+                newShape.color[1] = currentColour[1];
+                newShape.color[2] = currentColour[2];
+                newShape.lineWidth = line_size;
+                newShape.pointSize = point_size;
+
+                //------------------------------------------
+               // Copy vertices OR generate special shapes
+               //------------------------------------------
+
+                if (currentShapeType == SHAPE_SQUARE_WIRE ||
+                    currentShapeType == SHAPE_SQUARE_FILLED) {
+
+                    float verts[8];
+                    generateSquare(tempVertices, verts);
+
+                    for (int i = 0; i < 8; i++)
+                        newShape.vertices[i] = verts[i];
+
+                    newShape.vertexCount = 4;
+                }
+                else {
+                    newShape.vertexCount = tempVertexCount;
+                    for (int i = 0; i < tempVertexCount * 2; i++)
+                        newShape.vertices[i] = tempVertices[i];
+                }
+
+                shapes[shapeCount] = newShape;
+                shapeCount++;
+
+                tempVertexCount = 0;
+                clickCount = 0;
+            }
+
+            glutPostRedisplay();
+        }
+    }
+}
+
+//======================================================
+//  KEYBOARD SHORTCUTS
+//======================================================
+void keyboard(unsigned char key, int x, int y) {
+    switch (key) {
+    case 'c': case 'C':
+        shapeCount = 0;
+        tempVertexCount = 0;
+        clickCount = 0;
+        glutPostRedisplay();
+        break;
+    case 'e': case 'E':
+        exit(0);
+        break;
+    }
+}
+
+//======================================================
+//  RESHAPE
+//======================================================
+void reshape(int width, int height) {
+    window_width = width;
+    window_height = height;
+
+    scaleX = (float)width / (float)original_width;
+    scaleY = (float)(height - panel_height) / (float)(original_height - panel_height);
+
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, width, 0, height);
+    glMatrixMode(GL_MODELVIEW);
+
+    glutPostRedisplay();
+}
+
+//======================================================
+//  MAIN
+//======================================================
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(window_width, window_height);
+    glutCreateWindow("2D Paint Program - TMT2033");
+
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_POINT_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+    glutMouseFunc(mouse);
+    glutKeyboardFunc(keyboard);
+    glutReshapeFunc(reshape);
+    glutDisplayFunc(display);
+
+    createGLUTMenus();
+
+    glutMainLoop();
+    return 0;
+}
