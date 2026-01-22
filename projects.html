@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View all projects by Pauland Ipa Philip - Game development, web design, and mobile app prototypes.">
     <title>Projects | Pauland Ipa Philip</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -11,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
     <nav>
         <div class="logo">My Portfolio</div>
         <ul class="nav-links" id="nav-menu">
@@ -19,86 +22,108 @@
             <li><a href="socials.html">Socials</a></li>
         </ul>
         <div class="nav-right">
-            <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+            <button id="theme-toggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle dark/light theme">
                 <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
             </button>
             <div class="social-icons desktop-only">
-                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
             </div>
             <a href="assets/resume.pdf" class="resume-btn" target="_blank">Resume</a>
-            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
 
-    <section class="section-container" style="padding-top: 120px;">
-        <h2 class="section-title reveal">All Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/FallenElysium.jpeg" alt="Fallen Alysium"></div>
-                <div class="project-info">
-                    <h3>'Fallen Alysium' 2D game</h3>
-                    <p>A futuristic 2D platformer developed for game design coursework.</p>
-                    <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary">Download game</a>
-                </div>
+    <main id="main-content">
+        <section class="section-container" style="padding-top: 120px;">
+            <h2 class="section-title reveal">All Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/FallenElysium.jpeg" alt="Screenshot of Fallen Alysium game showing futuristic platformer gameplay">
+                    </div>
+                    <div class="project-info">
+                        <h3>'Fallen Alysium' 2D game</h3>
+                        <p>A futuristic 2D platformer developed for game design coursework where players navigate challenging levels while facing a rogue AI enemy.</p>
+                        <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary" download>Download game</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/ART.jpeg" alt="User interface mockup of A.R.T transit booking app">
+                    </div>
+                    <div class="project-info">
+                        <h3>A.R.T prototype app</h3>
+                        <p>A transit booking prototype for the Sarawak A.R.T system designed based on extensive user research and usability testing.</p>
+                        <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">Prototype link</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/LukouHub.png" alt="Homepage of LukouHub donut shop website">
+                    </div>
+                    <div class="project-info">
+                        <h3>LukouHub Shop</h3>
+                        <p>A commercial website developed for a donut store using HTML, CSS, and JavaScript with responsive design and interactive features.</p>
+                        <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">View website</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/Ocean-Cleanup-Diver.png" alt="Ocean Cleanup Diver game interface showing underwater scene">
+                    </div>
+                    <div class="project-info">
+                        <h3>'Ocean Cleanup Diver'</h3>
+                        <p>An OpenGL-based 2D game developed for a Computer Graphics project featuring underwater cleanup mechanics and environmental themes.</p>
+                        <a href="assets/ocean-cleanup-diver.cpp.txt" target="_blank" class="btn-primary">View code</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/Paint.jpeg" alt="Simple Paint Program interface with drawing tools">
+                    </div>
+                    <div class="project-info">
+                        <h3>Simple Paint Program</h3>
+                        <p>A graphics application with drawing features including brushes, shapes, and color selection developed using OpenGL.</p>
+                        <a href="assets/Simple Paint Program.txt" target="_blank" class="btn-primary">View code</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/eBookstore.jpeg" alt="e-Bookstore mobile app interface showing book catalog">
+                    </div>
+                    <div class="project-info">
+                        <h3>e-Bookstore mobile app</h3>
+                        <p>Android mockup app built with Kotlin and Firebase for online bookstore management with user authentication and shopping cart features.</p>
+                        <a href="https://github.com/Pauland-Ipa/eBookstore-App" class="btn-primary" target="_blank">View on GitHub</a>
+                    </div>
+                </article>
+                
+                <article class="project-card reveal" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/client-portfolio.png" alt="Client portfolio website homepage design">
+                    </div>
+                    <div class="project-info">
+                        <h3>Client Portfolio Website</h3>
+                        <p>A personal portfolio project developed specifically for a client featuring custom design, responsive layout, and interactive elements.</p>
+                        <a href="https://pauland-ipa.github.io/portfolio-website-project/" target="_blank" class="btn-primary">View website</a>
+                    </div>
+                </article>
             </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/ART.jpeg" alt="A.R.T Prototype"></div>
-                <div class="project-info">
-                    <h3>A.R.T prototype app</h3>
-                    <p>A transit booking prototype for the Sarawak A.R.T system.</p>
-                    <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">Prototype link</a>
-                </div>
-            </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/LukouHub.png" alt="LukouHub"></div>
-                <div class="project-info">
-                    <h3>LukouHub Shop</h3>
-                    <p>A commercial website developed for a donut store using modern web technologies.</p>
-                    <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">View website</a>
-                </div>
-            </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/Ocean-Cleanup-Diver.png" alt="Ocean Cleanup"></div>
-                <div class="project-info">
-                    <h3>'Ocean Cleanup Diver'</h3>
-                    [cite_start]<p>An OpenGL-based 2D game developed for a Computer Graphics project[cite: 1].</p>
-                    <a href="assets/ocean-cleanup-diver.cpp.txt" target="_blank" class="btn-primary">Try it here</a>
-                </div>
-            </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/Paint.jpeg" alt="Paint Program"></div>
-                <div class="project-info">
-                    <h3>Simple Paint Program</h3>
-                    <p>A graphics application with drawing features developed using OpenGL.</p>
-                    <a href="assets/Simple Paint Program.txt" target="_blank" class="btn-primary">Try it here</a>
-                </div>
-            </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/eBookstore.jpeg" alt="eBookstore"></div>
-                <div class="project-info">
-                    <h3>e-Bookstore mobile app</h3>
-                    <p>Mockup app built with Kotlin and Firebase for online bookstore management.</p>
-                    <button class="btn-primary">Download app</button>
-                </div>
-            </div>
-            <div class="project-card reveal" data-tilt>
-                <div class="project-image"><img src="assets/client-portfolio.png" alt="Client Portfolio"></div>
-                <div class="project-info">
-                    <h3>Client Portfolio Website</h3>
-                    <p>A personal portfolio project developed specifically for a client.</p>
-                    <a href="https://pauland-ipa.github.io/portfolio-website-project/" target="_blank" class="btn-primary">View website</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.threads.net/@paulandipa_" target="_blank"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.threads.net/@paulandipa_" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
         </div>
         <p>&copy; 2026 Pauland Ipa Philip. All rights reserved.</p>
     </footer>

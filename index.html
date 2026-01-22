@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Pauland Ipa Philip - Multimedia Computing student specializing in web development, game design, and mobile app prototypes.">
     <title>Pauland Ipa Philip | Portfolio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -11,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
     <nav>
         <div class="logo">My Portfolio</div>
         <ul class="nav-links" id="nav-menu">
@@ -19,99 +22,116 @@
             <li><a href="socials.html">Socials</a></li>
         </ul>
         <div class="nav-right">
-            <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+            <button id="theme-toggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle dark/light theme">
                 <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
             </button>
             <div class="social-icons desktop-only">
-                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
             </div>
             <a href="assets/resume.pdf" class="resume-btn" target="_blank">Resume</a>
-            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
 
-    <section class="hero reveal">
-        <div class="profile-container">
-            <img src="assets/profile.jpeg" alt="Pauland Ipa Philip" class="profile-img">
-        </div>
-        <div class="hero-content">
-            <h1>My name is Pauland Ipa Philip.</h1>
-            <p>I am a <span id="typing-text"></span><span class="cursor">|</span></p>
-            <a href="#contact" class="btn-primary" style="width: fit-content;">Contact Me</a>
-        </div>
-    </section>
-
-    <section class="section-container reveal">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <p>I am a Bachelor of Computer Science (Multimedia Computing) student at Universiti Malaysia Sarawak (UNIMAS). I specialize in building responsive web applications and mobile mockups.</p>
-        </div>
-    </section>
-
-    <section class="section-container reveal">
-        <h2 class="section-title">Project Highlights</h2>
-        <div class="projects-grid">
-            <div class="project-card" data-tilt>
-                <div class="project-image"><img src="assets/FallenElysium.jpeg" alt="Fallen Alysium"></div>
-                <div class="project-info">
-                    <h3>'Fallen Alysium' 2D game</h3>
-                    <p>A futuristic 2D platformer developed for game design coursework where players face a rogue AI enemy.</p>
-                    <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary">Download game</a>
-                </div>
+    <main id="main-content">
+        <section class="hero reveal">
+            <div class="profile-container">
+                <img src="assets/profile.jpeg" alt="Portrait of Pauland Ipa Philip" class="profile-img">
             </div>
-            <div class="project-card" data-tilt>
-                <div class="project-image"><img src="assets/ART.jpeg" alt="A.R.T Prototype"></div>
-                <div class="project-info">
-                    <h3>A.R.T prototype app</h3>
-                    <p>A prototype designed for the Sarawak A.R.T system to manage transit bookings based on user research.</p>
-                    <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">Prototype link</a>
-                </div>
+            <div class="hero-content">
+                <h1>My name is Pauland Ipa Philip.</h1>
+                <p>I am a <span id="typing-text"></span><span class="cursor">|</span></p>
+                <a href="#contact" class="btn-primary" style="width: fit-content;">Contact Me</a>
             </div>
-            <div class="project-card" data-tilt>
-                <div class="project-image"><img src="assets/LukouHub.png" alt="LukouHub"></div>
-                <div class="project-info">
-                    <h3>LukouHub Donut Shop</h3>
-                    <p>A commercial website developed for a donut store utilizing HTML, CSS, and JavaScript.</p>
-                    <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">View website</a>
-                </div>
-            </div>
-        </div>
-        <a href="projects.html" class="btn-primary" style="margin-top: 3rem;">View all projects</a>
-    </section>
+        </section>
 
-    <section id="contact" class="contact-section reveal">
-        <div class="contact-content">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="email-container">
-                <p>My email: <span id="email-text">ppawlenchumil@gmail.com</span></p>
-                <button id="copy-btn" class="icon-btn" title="Copy to clipboard">
-                    <span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span>
-                </button>
+        <section class="section-container reveal">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a Bachelor of Computer Science (Multimedia Computing) student at Universiti Malaysia Sarawak (UNIMAS). I specialize in building responsive web applications and mobile mockups, with a passion for creating engaging user experiences through thoughtful design and clean code.</p>
             </div>
-            <form id="contact-form">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="btn-primary">Send Message</button>
-                <div id="success-animation" class="hidden">
-                    <div class="paper-plane"></div>
-                    <p>Message Ready!</p>
-                </div>
-            </form>
-        </div>
-    </section>
+        </section>
 
-    <button id="back-to-top" title="Go to top">
+        <section class="section-container reveal">
+            <h2 class="section-title">Project Highlights</h2>
+            <div class="projects-grid">
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/FallenElysium.jpeg" alt="Screenshot of Fallen Alysium game showing futuristic platformer gameplay">
+                    </div>
+                    <div class="project-info">
+                        <h3>'Fallen Alysium' 2D game</h3>
+                        <p>A futuristic 2D platformer developed for game design coursework where players face a rogue AI enemy.</p>
+                        <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary" download>Download game</a>
+                    </div>
+                </article>
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/ART.jpeg" alt="User interface mockup of A.R.T transit booking app">
+                    </div>
+                    <div class="project-info">
+                        <h3>A.R.T prototype app</h3>
+                        <p>A prototype designed for the Sarawak A.R.T system to manage transit bookings based on user research.</p>
+                        <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">Prototype link</a>
+                    </div>
+                </article>
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/LukouHub.png" alt="Homepage of LukouHub donut shop website">
+                    </div>
+                    <div class="project-info">
+                        <h3>LukouHub Donut Shop</h3>
+                        <p>A commercial website developed for a donut store utilizing HTML, CSS, and JavaScript.</p>
+                        <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">View website</a>
+                    </div>
+                </article>
+            </div>
+            <a href="projects.html" class="btn-primary" style="margin-top: 3rem;">View all projects</a>
+        </section>
+
+        <section id="contact" class="contact-section reveal">
+            <div class="contact-content">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="email-container">
+                    <p>My email: <span id="email-text">ppawlenchumil@gmail.com</span></p>
+                    <button id="copy-btn" class="icon-btn" title="Copy to clipboard" aria-label="Copy email address">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span>
+                    </button>
+                </div>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                    <div id="success-animation" class="hidden">
+                        <div class="paper-plane"></div>
+                        <p>Message Ready!</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" title="Go to top" aria-label="Back to top">
         <span class="material-symbols-outlined">arrow_upward</span>
     </button>
 
     <footer>
         <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Pauland-Ipa" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.threads.net/@paulandipa_" target="_blank"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.threads.net/@paulandipa_" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
         </div>
         <p>&copy; 2026 Pauland Ipa Philip. All rights reserved.</p>
     </footer>
