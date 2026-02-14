@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Pauland Ipa Philip - Multimedia Computing student specializing in web development, game design, and mobile app prototypes.">
-    <title>Pauland Ipa Philip | Portfolio</title>
+    <meta name="description" content="Pauland Ipa Philip - Computer Science student specializing in Multimedia Computing, Web Development, and UI/UX Design at UNIMAS.">
+    <meta name="keywords" content="portfolio, web developer, multimedia computing, UI/UX design, Pauland Ipa Philip">
+    <meta name="author" content="Pauland Ipa Philip">
+    <title>Pauland Ipa Philip | Multimedia Computing Portfolio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -15,109 +17,332 @@
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
     
     <nav>
-        <div class="logo">My Portfolio</div>
+        <div class="logo">Pauland Ipa Philip</div>
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="socials.html">Socials</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
             <button id="theme-toggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle dark/light theme">
                 <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
             </button>
             <div class="social-icons desktop-only">
-                <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/pauland-ipa" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
             </div>
-            <a href="assets/resume.pdf" class="resume-btn" target="_blank">Resume</a>
+            <a href="assets/resume.pdf" class="resume-btn" target="_blank">Download CV</a>
             <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
 
     <main id="main-content">
+        <!-- HERO SECTION -->
         <section class="hero reveal">
             <div class="profile-container">
                 <img src="assets/profile.jpeg" alt="Portrait of Pauland Ipa Philip" class="profile-img">
             </div>
             <div class="hero-content">
-                <h1>My name is Pauland Ipa Philip.</h1>
-                <p>I am a <span id="typing-text"></span><span class="cursor">|</span></p>
-                <a href="#contact" class="btn-primary" style="width: fit-content;">Contact Me</a>
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1>Pauland Ipa Philip</h1>
+                <p class="hero-role"><span id="typing-text"></span><span class="cursor">|</span></p>
+                <p class="hero-description">Computer Science student at UNIMAS specializing in Multimedia Computing, with expertise in web development, UI/UX design, and game development.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn-secondary">View Projects</a>
+                </div>
             </div>
         </section>
 
-        <section class="section-container reveal">
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section-container reveal">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I am a Bachelor of Computer Science (Multimedia Computing) student at Universiti Malaysia Sarawak (UNIMAS). I specialize in building responsive web applications and mobile mockups, with a passion for creating engaging user experiences through thoughtful design and clean code.</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am currently pursuing a Bachelor of Computer Science (Multimedia Computing) with Honours at Universiti Malaysia Sarawak (UNIMAS), with an expected graduation in 2026.</p>
+                    <p>My academic journey has equipped me with strong foundations in programming, web development, and digital media creation. I'm passionate about creating user-centric digital experiences that blend creativity with technical precision.</p>
+                    <p>Through various coursework projects and self-directed learning, I've developed expertise in building responsive web applications, designing intuitive user interfaces, and implementing interactive multimedia solutions.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2026</div>
+                        <div class="stat-label">Expected Graduation</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section-container reveal">
-            <h2 class="section-title">Project Highlights</h2>
+        <!-- EDUCATION SECTION -->
+        <section class="education-section reveal">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Present</div>
+                        <h3>Bachelor of Computer Science (Multimedia Computing) with Honours</h3>
+                        <p class="institution">Universiti Malaysia Sarawak (UNIMAS)</p>
+                        <p class="details">CGPA: 2.8 / 4.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3>Foundation in Life Science</h3>
+                        <p class="institution">Universiti Malaysia Sarawak (UNIMAS)</p>
+                        <p class="details">CGPA: 2.8 / 4.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017 - 2020</div>
+                        <h3>Sijil Pelajaran Malaysia (SPM)</h3>
+                        <p class="institution">SM Sains Miri</p>
+                        <p class="details">4A, 3B, 2C</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section-container reveal">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Kotlin</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Design & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">OpenGL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-icon"><i class="fas fa-language"></i></div>
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (MUET Band 4.5)</span>
+                        <span class="skill-tag">Malay (Native)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section-container reveal">
+            <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 <article class="project-card" data-tilt>
                     <div class="project-image">
-                        <img src="assets/FallenElysium.jpeg" alt="Screenshot of Fallen Alysium game showing futuristic platformer gameplay">
+                        <img src="assets/FallenElysium.jpeg" alt="Fallen Alysium 2D platformer game screenshot">
                     </div>
                     <div class="project-info">
-                        <h3>'Fallen Alysium' 2D game</h3>
-                        <p>A futuristic 2D platformer developed for game design coursework where players face a rogue AI enemy.</p>
-                        <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary" download>Download game</a>
+                        <div class="project-tags">
+                            <span class="tag">Game Development</span>
+                            <span class="tag">C++</span>
+                        </div>
+                        <h3>'Fallen Alysium' 2D Game</h3>
+                        <p>A futuristic 2D platformer developed for game design coursework featuring combat mechanics, level progression, and AI-driven enemy behavior.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Pauland-Ipa/Pauland-s-Portfolio/releases/download/v1.0/Fallen_Elys_ium.apk" class="btn-primary" download>
+                                <i class="fas fa-download"></i> Download APK
+                            </a>
+                        </div>
                     </div>
                 </article>
+
                 <article class="project-card" data-tilt>
                     <div class="project-image">
-                        <img src="assets/ART.jpeg" alt="User interface mockup of A.R.T transit booking app">
+                        <img src="assets/ART.jpeg" alt="A.R.T transit booking app UI mockup">
                     </div>
                     <div class="project-info">
-                        <h3>A.R.T prototype app</h3>
-                        <p>A prototype designed for the Sarawak A.R.T system to manage transit bookings based on user research.</p>
-                        <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">Prototype link</a>
+                        <div class="project-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Figma</span>
+                        </div>
+                        <h3>Sarawak A.R.T Prototype App</h3>
+                        <p>High-fidelity mobile prototype for Sarawak's Autonomous Rapid Transit system. Conducted user research, created user flows, and designed a comprehensive design system.</p>
+                        <div class="project-links">
+                            <a href="https://www.figma.com/proto/ep50bMH6mpg8LM2FDVUHRh/Untitled?node-id=30-363" target="_blank" class="btn-primary">
+                                <i class="fas fa-external-link-alt"></i> View Prototype
+                            </a>
+                        </div>
                     </div>
                 </article>
+
                 <article class="project-card" data-tilt>
                     <div class="project-image">
-                        <img src="assets/LukouHub.png" alt="Homepage of LukouHub donut shop website">
+                        <img src="assets/LukouHub.png" alt="LukouHub donut shop website homepage">
                     </div>
                     <div class="project-info">
-                        <h3>LukouHub Donut Shop</h3>
-                        <p>A commercial website developed for a donut store utilizing HTML, CSS, and JavaScript.</p>
-                        <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">View website</a>
+                        <div class="project-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <h3>LukouHub Commercial Website</h3>
+                        <p>Fully responsive e-commerce website for a donut store built with HTML, CSS, and JavaScript. Features product catalog, shopping interface, and mobile optimization.</p>
+                        <div class="project-links">
+                            <a href="https://dinda1112.github.io/lukouhub/index.html#" target="_blank" class="btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/eBookstore.jpeg" alt="e-Bookstore Android app interface">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">Mobile Development</span>
+                            <span class="tag">Kotlin</span>
+                        </div>
+                        <h3>e-Bookstore Mobile App</h3>
+                        <p>Android application mockup built with Kotlin featuring book catalog, search functionality, and user authentication with Firebase integration.</p>
+                        <div class="project-links">
+                            <a href="https://youtu.be/7bFs1Dcs_Ko" target="_blank" class="btn-primary">
+                                <i class="fab fa-youtube"></i> Watch Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/client-portfolio.png" alt="Client portfolio website design">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Git</span>
+                        </div>
+                        <h3>Portfolio Website Project</h3>
+                        <p>Custom portfolio website developed for a coursemate using HTML, CSS, and JavaScript. Implemented responsive grid layouts and deployed via GitHub Pages.</p>
+                        <div class="project-links">
+                            <a href="https://pauland-ipa.github.io/portfolio-website-project/" target="_blank" class="btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Live Site
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tilt>
+                    <div class="project-image">
+                        <img src="assets/Ocean-Cleanup-Diver.png" alt="Ocean Cleanup Diver game interface">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">OpenGL</span>
+                            <span class="tag">C++</span>
+                        </div>
+                        <h3>'Ocean Cleanup Diver' Game</h3>
+                        <p>OpenGL-based 2D game developed for Computer Graphics coursework featuring underwater mechanics, collision detection, and environmental themes.</p>
+                        <div class="project-links">
+                            <a href="assets/ocean-cleanup-diver.cpp.txt" target="_blank" class="btn-primary">
+                                <i class="fas fa-code"></i> View Code
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
-            <a href="projects.html" class="btn-primary" style="margin-top: 3rem;">View all projects</a>
+            <div class="view-all-container">
+                <a href="projects.html" class="btn-outline">View All Projects</a>
+            </div>
         </section>
 
+        <!-- CONTACT SECTION -->
         <section id="contact" class="contact-section reveal">
             <div class="contact-content">
-                <h2 class="section-title">Contact Me</h2>
-                <div class="email-container">
-                    <p>My email: <span id="email-text">ppawlenchumil@gmail.com</span></p>
-                    <button id="copy-btn" class="icon-btn" title="Copy to clipboard" aria-label="Copy email address">
-                        <span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span>
-                    </button>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-intro">I'm currently open to opportunities and collaborations. Feel free to reach out if you'd like to discuss potential projects or just want to connect!</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:ppawlenchumil@gmail.com">ppawlenchumil@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <a href="tel:+60113155951">+60 11-3155 9516</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Sarawak, Malaysia</p>
+                        </div>
+                    </div>
                 </div>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                    <div id="success-animation" class="hidden">
-                        <div class="paper-plane"></div>
-                        <p>Message Ready!</p>
-                    </div>
-                </form>
+
+                <div class="contact-form-container">
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <div id="form-status" class="hidden"></div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -127,13 +352,33 @@
     </button>
 
     <footer>
-        <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/pauland-ipa-1b25602a9" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.threads.net/@paulandipa_" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pauland Ipa Philip</h3>
+                <p>Computer Science Student specializing in Multimedia Computing</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/pauland-ipa" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Pauland-Ipa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.facebook.com/share/1E3hBJ15D4/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.threads.net/@paulandipa_" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 Pauland Ipa Philip. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pauland Ipa Philip. All rights reserved.</p>
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>
